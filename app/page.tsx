@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import {
   InquireBand,
   Photo,
@@ -9,9 +9,7 @@ import {
   SiteLayout,
   TextLink,
 } from "@/components/site-layout";
-
 import { photos } from "@/lib/property";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "18334 Hiawatha | A Palmer & Krisel Modern",
@@ -19,328 +17,219 @@ export const metadata: Metadata = {
     "Explore 18334 Hiawatha Street, a 1958 Palmer & Krisel modern home in Porter Ranch with a private pool and creative studio.",
 };
 
-function Home() {
+export default function Home() {
   return (
     <SiteLayout>
       {/* =========================================================
-          FULL SCREEN HERO
+          HERO
       ========================================================= */}
-      <section className="relative h-[100svh] min-h-[700px] w-full overflow-hidden">
-        {/* =====================================================
-            HERO IMAGE
-
-            IMPORTANT:
-            Use direct <img> here instead of Photo.
-        ===================================================== */}
+      <section className="home-hero relative flex min-h-[78svh] flex-col justify-end overflow-hidden bg-foreground text-primary-foreground sm:min-h-[82svh]">
         <img
           src={photos.hero}
-          alt="Sunlit living room at 18334 Hiawatha with glass doors opening to the garden"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          loading="eager"
+          alt="Sunlit living room at 18334 Hiawatha opening to the garden"
+          className="hero-image absolute inset-0 h-full w-full object-cover"
+          fetchPriority="high"
         />
 
-        {/* =====================================================
-            IMAGE OVERLAY
-        ===================================================== */}
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="hero-shade absolute inset-0" />
 
-        {/* Bottom gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-
-        {/* =====================================================
-            HERO CONTENT
-        ===================================================== */}
-        <div className="relative z-10 flex h-full items-end">
-          <div className="site-container w-full pb-24 pt-40 sm:pb-28 lg:pb-32">
-            <div className="max-w-3xl text-white">
-              {/* Location */}
-              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-orange-200 sm:text-xs">
-                Porter Ranch · Los Angeles
+        <div className="site-container relative z-10 pb-12 pt-36 sm:pb-16">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="hero-eyebrow text-xs font-semibold uppercase tracking-[0.2em]">
+                Porter Ranch · Los Angeles · 1958
               </p>
 
-              {/* Title */}
-              <h1
-                className="
-                  mt-5
-                  max-w-[10ch]
-                  font-display
-                  text-6xl
-                  leading-[0.9]
-                  tracking-tight
-                  sm:text-7xl
-                  md:text-8xl
-                  lg:text-[8rem]
-                  xl:text-[9rem]
-                "
-              >
+              <h1 className="hero-title mt-5 font-display text-[clamp(4.1rem,10vw,10rem)] leading-[0.82]">
                 18334
                 <br />
-                Hiawatha.
+                <em>Hiawatha.</em>
               </h1>
 
-              {/* Subtitle */}
-              <p
-                className="
-                  mt-6
-                  font-display
-                  text-xl
-                  italic
-                  text-white/95
-                  sm:text-2xl
-                  md:text-3xl
-                "
-              >
-                A 1958 modern, kept whole.
+              <p className="mt-6 max-w-lg text-base sm:text-lg">
+                A Palmer & Krisel modern, kept whole.
               </p>
-
-              {/* Description */}
-              <p
-                className="
-                  mt-6
-                  max-w-xl
-                  text-sm
-                  leading-relaxed
-                  text-white/85
-                  sm:text-base
-                  md:text-lg
-                "
-              >
-                A rare Palmer & Krisel residence where walls of glass,
-                sunlit rooms, and a private garden make modernism a way
-                of living.
-              </p>
-
-              {/* Buttons */}
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button
-                  asChild
-                  variant="editorial"
-                  size="lg"
-                  className="hover-lift"
-                >
-                  <a href="#inquire">
-                    Request a viewing
-                    <ArrowRight />
-                  </a>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="editorialOutline"
-                  size="lg"
-                  className="
-                    hover-lift
-                    border-white/60
-                    bg-white/10
-                    text-white
-                    backdrop-blur-md
-                    hover:bg-white
-                    hover:text-foreground
-                  "
-                >
-                  <Link href="/architecture">
-                    The architecture
-                  </Link>
-                </Button>
-              </div>
             </div>
+
+            <a
+              href="#collection"
+              className="hero-scroll hidden shrink-0 items-center gap-3 text-xs uppercase tracking-[0.16em] sm:flex"
+            >
+              Explore the home
+              <ArrowDown size={18} />
+            </a>
           </div>
-        </div>
-
-        {/* =====================================================
-            PRICE CARD
-        ===================================================== */}
-        <div
-          className="
-            absolute
-            bottom-8
-            right-6
-            z-20
-            rounded-md
-            border
-            border-white/40
-            bg-white/90
-            px-5
-            py-4
-            shadow-xl
-            backdrop-blur-xl
-            sm:bottom-10
-            sm:right-10
-            sm:px-6
-            sm:py-5
-            lg:bottom-12
-            lg:right-12
-          "
-        >
-          <p className="font-display text-2xl text-foreground sm:text-3xl">
-            $1,595,000
-          </p>
-
-          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            Offered at
-          </p>
         </div>
       </section>
 
       {/* =========================================================
-          PROPERTY FACTS
+          COLLECTION / INTRO
       ========================================================= */}
-      <section className="site-container py-0">
-        <div
-          className="
-            grid
-            grid-cols-2
-            overflow-hidden
-            rounded-md
-            border
-            border-border
-            bg-border/60
-            sm:grid-cols-4
-          "
-        >
-          {[
-            ["3", "Bedrooms"],
-            ["2", "Bathrooms"],
-            ["1,890", "Approx. sq. ft. interior"],
-            ["11,100", "Approx. sq. ft. lot"],
-          ].map(([value, label]) => (
-            <div
-              key={label}
-              className="
-                fact-cell
-                border-r
-                border-b
-                border-border
-                bg-card/70
-                px-5
-                py-5
-                last:border-r-0
-                sm:border-b-0
-                sm:px-6
-                sm:py-6
-              "
-            >
-              <p className="font-display text-3xl sm:text-4xl">
-                {value}
-              </p>
+      <section
+        id="collection"
+        className="gallery-intro site-container scroll-mt-[76px] py-20 sm:py-28"
+      >
+        <div className="gallery-grid grid gap-8 lg:grid-cols-12 lg:gap-10">
+          {/* PRIMARY IMAGE */}
+          <div className="gallery-primary relative lg:col-span-7">
+            <Photo
+              src={photos.front}
+              alt="Street-facing entrance and roofline of the Palmer and Krisel home"
+              eager
+              className="is-visible aspect-[4/3] lg:aspect-[5/4]"
+            />
 
-              <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                {label}
+            <div className="gallery-plaque">
+              <span className="eyebrow">
+                01 / An architectural original
+              </span>
+
+              <p className="mt-2 font-display text-3xl italic sm:text-4xl">
+                A house with a story to tell.
               </p>
             </div>
-          ))}
+          </div>
+
+          {/* IDENTITY */}
+          <div className="scroll-reveal gallery-identity lg:col-span-5 lg:pl-8">
+            <SectionLabel>The residence / 1958</SectionLabel>
+
+            <h2 className="mt-7 font-display text-6xl leading-[0.86] sm:text-7xl xl:text-8xl">
+              Built for <em>living.</em>
+            </h2>
+
+            <div className="mt-9 h-px w-28 bg-foreground" />
+
+            <p className="mt-8 max-w-sm leading-relaxed text-muted-foreground">
+              Walls of glass, sunlit rooms, and a private garden make
+              modernism a way of living, not just looking.
+            </p>
+
+            <p className="mt-7 font-display text-4xl">
+              $1,595,000
+            </p>
+
+            <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+              Offered at
+            </p>
+
+            <div className="mt-9">
+              <Button
+                asChild
+                variant="editorial"
+                size="lg"
+                className="hover-lift"
+              >
+                <a href="#inquire">
+                  Request a viewing
+                  <ArrowRight />
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* LIVING ROOM */}
+          <div className="gallery-portrait lg:col-span-4 lg:-mt-20">
+            <Photo
+              src={photos.living}
+              alt="Living room detail with exposed beams and glass"
+              className="aspect-[3/4] border-[12px] border-card shadow-xl"
+            />
+
+            <span className="mt-3 block text-xs uppercase tracking-[0.18em] text-muted-foreground">
+              Exhibit A / The living room
+            </span>
+          </div>
+
+          {/* FACTS */}
+          <div className="gallery-facts scroll-reveal grid grid-cols-2 gap-x-8 gap-y-7 self-center lg:col-span-3 lg:-mt-16 lg:grid-cols-1 lg:pl-8">
+            <div>
+              <span className="eyebrow">Interior</span>
+
+              <p className="mt-1 font-display text-3xl">
+                1,890{" "}
+                <span className="text-lg">sq ft</span>
+              </p>
+            </div>
+
+            <div>
+              <span className="eyebrow">Grounds</span>
+
+              <p className="mt-1 font-display text-3xl">
+                11,100{" "}
+                <span className="text-lg">sq ft</span>
+              </p>
+            </div>
+
+            <div>
+              <span className="eyebrow">Residence</span>
+
+              <p className="mt-1 font-display text-3xl">
+                3 bed / 2 bath
+              </p>
+            </div>
+
+            {/* FIXED: href instead of to */}
+            <TextLink href="/details">
+              View all details
+            </TextLink>
+          </div>
+
+          {/* POOL */}
+          <div className="gallery-landscape lg:col-span-5">
+            <Photo
+              src={photos.poolWide}
+              alt="Pool and outdoor living beside the home"
+              className="aspect-[5/3] shadow-xl"
+            />
+
+            <p className="mt-5 border-l border-border pl-5 font-display text-xl italic text-muted-foreground">
+              Light, landscape, and life in between.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* =========================================================
           ARCHITECTURE
       ========================================================= */}
-      <section className="site-container grid gap-10 py-24 md:grid-cols-12 md:gap-8 lg:py-32">
-        <div className="md:col-span-4">
-          <SectionLabel>The Architecture</SectionLabel>
-
-          <h2 className="mt-5 max-w-[12ch] font-display text-4xl leading-tight sm:text-5xl">
-            Provenance, preserved.
-          </h2>
-
-          <p className="mt-6 max-w-sm leading-relaxed text-muted-foreground">
-            Designed by Dan Palmer and William Krisel in 1958, this
-            home belongs to the Living-Conditioned Homes enclave —
-            an enduring vision of California life.
-          </p>
-
-          <div className="mt-8">
-            <TextLink href="/architecture">
-              Explore the architecture
-            </TextLink>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 md:col-span-8">
-          <Photo
-            src={photos.architects}
-            alt="Archival photograph of architects Dan Palmer and William Krisel"
-            className="aspect-[4/5]"
-          />
-
-          <Photo
-            src={photos.front}
-            alt="Street-facing exterior of the Palmer and Krisel home"
-            className="aspect-[4/5]"
-          />
-        </div>
-      </section>
-
-      {/* =========================================================
-          INSIDE / OUTSIDE
-      ========================================================= */}
-      <section className="border-y border-border bg-secondary/60 py-24 lg:py-32">
+      <section className="chapter-band border-y border-border bg-secondary py-24 sm:py-32">
         <div className="site-container">
-          <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div className="scroll-reveal mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <SectionLabel>Inside / outside</SectionLabel>
+              <SectionLabel>
+                01 / The architecture
+              </SectionLabel>
 
-              <h2 className="mt-4 font-display text-4xl sm:text-5xl">
-                A life in the light.
+              <h2 className="mt-5 max-w-[14ch] font-display text-5xl leading-[0.98] sm:text-7xl">
+                Provenance, <em>preserved.</em>
               </h2>
             </div>
 
-            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              From open living spaces to a private pool and garden,
-              the architecture lets everyday life flow beyond the
-              walls.
+            <p className="max-w-sm leading-relaxed text-muted-foreground">
+              Designed by Dan Palmer and William Krisel in 1958,
+              this home belongs to the Living-Conditioned Homes
+              enclave.
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="chapter-gallery grid gap-5 md:grid-cols-12">
             <Photo
-              src={photos.hall}
-              alt="Sunlit hallway and open interior of the home"
-              className="aspect-[4/5]"
+              src={photos.architects}
+              alt="Archival photograph of architects Dan Palmer and William Krisel"
+              className="aspect-[4/5] md:col-span-4"
             />
 
             <Photo
-              src={photos.garden}
-              alt="Landscaped poolside garden and private outdoor space"
-              className="aspect-[4/5]"
+              src={photos.courtyard}
+              alt="Original architectural details around the courtyard"
+              className="aspect-[4/5] md:col-span-5 md:mt-20"
             />
 
-            <Photo
-              src={photos.pool}
-              alt="Heated pool and patio framed by mature landscaping"
-              className="aspect-[4/5]"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          STUDIO
-      ========================================================= */}
-      <section className="bg-secondary/60 py-24 lg:py-32">
-        <div className="site-container grid gap-10 md:grid-cols-12 md:items-center">
-          <Photo
-            src={photos.studioMain}
-            alt="Light-filled creative studio with instruments and work space"
-            className="aspect-[7/5] md:col-span-7"
-          />
-
-          <div className="md:col-span-5 md:pl-8">
-            <SectionLabel>The Studio</SectionLabel>
-
-            <h2 className="mt-5 max-w-[12ch] font-display text-4xl leading-tight sm:text-5xl">
-              A room made for sound.
-            </h2>
-
-            <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">
-              The former garage became a sound-treated creative studio
-              with a skylight, recording booth, and space to make
-              things.
-            </p>
-
-            <div className="mt-8">
-              <TextLink href="/studio">
-                Discover the studio
+            <div className="scroll-reveal flex items-end md:col-span-3 md:pb-9">
+              {/* FIXED: href instead of to */}
+              <TextLink href="/architecture">
+                Explore the architecture
               </TextLink>
             </div>
           </div>
@@ -348,59 +237,80 @@ function Home() {
       </section>
 
       {/* =========================================================
-          DETAILS
+          INSIDE / OUTSIDE
       ========================================================= */}
-      <section className="site-container grid gap-12 py-24 md:grid-cols-12 lg:py-32">
-        <div className="md:col-span-5">
-          <SectionLabel>The Details</SectionLabel>
+      <section className="site-container py-24 sm:py-32">
+        <div className="scroll-reveal mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div>
+            <SectionLabel>
+              02 / Inside & outside
+            </SectionLabel>
 
-          <h2 className="mt-5 font-display text-4xl sm:text-5xl">
-            The facts, precisely.
-          </h2>
-
-          <p className="mt-6 max-w-sm leading-relaxed text-muted-foreground">
-            A considered restoration, a generous lot, and room for
-            what comes next.
-          </p>
-
-          <div className="mt-8">
-            <TextLink href="/details">
-              View all details
-            </TextLink>
+            <h2 className="mt-5 font-display text-5xl sm:text-7xl">
+              A life in <em>the light.</em>
+            </h2>
           </div>
+
+          <p className="max-w-sm leading-relaxed text-muted-foreground">
+            Open living spaces and a private pool let everyday
+            life flow beyond the walls.
+          </p>
         </div>
 
-        <div className="md:col-span-7">
-          <dl className="divide-y divide-border border-y border-border">
-            {[
-              ["Address", "18334 Hiawatha Street"],
-              ["Year built", "1958"],
-              ["Renovated", "2022"],
-              ["Outdoor living", "Private heated pool & spa"],
-            ].map(([label, value]) => (
-              <div
-                key={label}
-                className="
-                  fact-row
-                  flex
-                  flex-wrap
-                  items-center
-                  justify-between
-                  gap-2
-                  py-5
-                  text-sm
-                "
-              >
-                <dt className="text-muted-foreground">
-                  {label}
-                </dt>
+        <div className="inside-gallery grid gap-5 md:grid-cols-12">
+          <Photo
+            src={photos.hall}
+            alt="Sunlit hallway and open interior"
+            className="aspect-[4/5] md:col-span-4"
+          />
 
-                <dd className="font-medium">
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <Photo
+            src={photos.garden}
+            alt="Landscaped garden and private outdoor space"
+            className="aspect-[4/5] md:col-span-4 md:mt-20"
+          />
+
+          <Photo
+            src={photos.pool}
+            alt="Heated pool and patio"
+            className="aspect-[4/5] md:col-span-4 md:mt-40"
+          />
+        </div>
+      </section>
+
+      {/* =========================================================
+          STUDIO
+      ========================================================= */}
+      <section className="chapter-band border-y border-border bg-secondary py-24 sm:py-32">
+        <div className="site-container grid gap-12 md:grid-cols-12 md:items-center">
+          <Photo
+            src={photos.studioMain}
+            alt="Light-filled creative studio with instruments"
+            className="aspect-[7/5] md:col-span-7"
+          />
+
+          <div className="scroll-reveal md:col-span-5 md:pl-10">
+            <SectionLabel>
+              03 / The studio
+            </SectionLabel>
+
+            <h2 className="mt-5 font-display text-5xl leading-[0.98] sm:text-7xl">
+              A room made for <em>sound.</em>
+            </h2>
+
+            <p className="mt-7 max-w-md leading-relaxed text-muted-foreground">
+              The former garage became a sound-treated creative
+              studio with a skylight, recording booth, and space
+              to make things.
+            </p>
+
+            <div className="mt-9">
+              {/* FIXED: href instead of to */}
+              <TextLink href="/studio">
+                Discover the studio
+              </TextLink>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -411,5 +321,3 @@ function Home() {
     </SiteLayout>
   );
 }
-
-export default Home;
