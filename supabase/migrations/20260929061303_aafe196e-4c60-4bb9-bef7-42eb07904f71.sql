@@ -1,0 +1,1 @@
+CREATE POLICY "Trusted service can manage private property enquiries" ON public.property_enquiries FOR ALL TO service_role USING (true) WITH CHECK (true);
