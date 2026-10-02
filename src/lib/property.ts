@@ -49,7 +49,7 @@ export const photos = {
   poolLegacy: "/images/pool.webp",
   poolWideLegacy: "/images/pool-wide.jpg",
   nightLegacy: "/images/night.webp",
-
+  floorPlan: "/images/floorplan.jpg",
   gallery: [
     ["/images/Hero Section.jpg", "Sunlit living room opening to the garden", "Living / 01"],
     ["/images/10-web-or-mls-18334 Hiawatha St by Pierre Galant-10.jpg", "Living room with floor-to-ceiling glass and exposed beams", "Living / 02"],
