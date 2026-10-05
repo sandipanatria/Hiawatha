@@ -11,7 +11,7 @@ import {
 import { photos } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "The Architecture | 18334 Hiawatha",
+  title: "The Architecture",
   description:
     "Discover the 1958 Palmer & Krisel architecture, butterfly roofline, and Living-Conditioned Homes history at 18334 Hiawatha.",
 };

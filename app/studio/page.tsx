@@ -11,7 +11,7 @@ import {
 import { photos } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "The Studio | 18334 Hiawatha",
+  title: "The Studio",
   description:
     "Explore the sound-treated creative studio, skylight, and built-in recording booth at 18334 Hiawatha.",
 };

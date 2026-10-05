@@ -16,7 +16,7 @@ import { PropertyGallery } from "@/components/property-gallery";
 import { photos } from "@/lib/property";
 
 export const metadata: Metadata = {
-  title: "18334 Hiawatha | A Palmer & Krisel Modern",
+  title: "Palmer & Krisel Modern Home in Porter Ranch",
   description:
     "Explore 18334 Hiawatha Street, a 1958 Palmer & Krisel modern home in Porter Ranch with a private pool and creative studio.",
 };
